@@ -6,7 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Product extends Model
 {
     use HasFactory;
 
@@ -17,4 +17,8 @@ class Project extends Model
         'category',
         'price',
     ];
+
+    public function orders () {
+        return $this->belongsToMany(Order::class);
+    }
 }
