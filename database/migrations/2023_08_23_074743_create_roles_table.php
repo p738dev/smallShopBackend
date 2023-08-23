@@ -1,10 +1,11 @@
 <?php
 
+use App\Enums\UserRole;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +14,10 @@ class CreateProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('desc');
-            $table->decimal('price', 9, 2);
-            $table->timestamps();
+        Schema::create('roles', function (Blueprint $table) {
+                $table->id();
+                $table->enum('role_name', UserRole::ROLES);
+                $table->timestamps();
         });
     }
 
@@ -29,6 +28,6 @@ class CreateProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('roles');
     }
 }
