@@ -19,10 +19,10 @@ class OrderRepository implements OrderRepositoryInterface
     }
 
     /**
-     * @param int $id
+     * @param string $id
      * @return ?Order
      */
-    public function show(int $id) {
+    public function show(string $id) {
         $order = Order::findOrFail($id);
         return $order;
     }
