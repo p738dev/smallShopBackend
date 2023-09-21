@@ -39,7 +39,7 @@ class UserService implements UserServiceInterface
                     'is_success' => false,
                     'message' => 'Błąd walidacji usera',
                     'errors' => $validateUser->errors()
-                ], Response::HTTP_UNPROCESSABLE_ENTITY);
+                ], 400);
             };
 
             $user = new User();
@@ -62,7 +62,7 @@ class UserService implements UserServiceInterface
         } catch (\Throwable $th) {
             return response()->json([
                 'is_success' => false,
-                'message' => $th->getMessage()
+                'message' => 'Nie można nawiązać połączenia z serwerem'
             ], 500);
         }
     }
