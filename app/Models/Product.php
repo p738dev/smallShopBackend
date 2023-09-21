@@ -10,10 +10,6 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id';
-    protected $keyType = 'string';
-    public $incrementing = false;
-
     protected $fillable = [
         'id',
         'title',
