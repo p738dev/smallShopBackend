@@ -23,7 +23,6 @@ use App\Http\Controllers\Api\UserController;
 // });
 
 Route::post('/login', [UserController::class, 'login']);
-Route::get('/logout', [UserController::class, 'logout']);
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{id}', [ProductController::class, 'show']);
@@ -41,4 +40,6 @@ Route::middleware('auth:sanctum')->group(function(){
 
         Route::get('/orders', [OrderController::class, 'index']);
         Route::delete('/orders/{id}', [OrderController::class, 'destroy']); 
+
+        Route::get('/logout', [UserController::class, 'logout']);
 });

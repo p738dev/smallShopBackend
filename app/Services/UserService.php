@@ -103,13 +103,15 @@ class UserService implements UserServiceInterface
 
             $token = $user->createToken('token')->plainTextToken;
 
+            $cookie = cookie('token', $token, 60*24);
+
             return response([
                 'is_success' => true,
                 'message' => 'User poprawnie zalogowany!',
                 'token' => $token,
                 'role_name' => $role_name,
                 'name' => $name
-            ], 200);
+            ], 200)->withCookie($cookie);
 
         } catch (\Throwable $th) {
             return response()->json([
@@ -125,6 +127,11 @@ class UserService implements UserServiceInterface
      */
     public function logout() {
         Auth::logout();
-        return redirect('/login');
+        
+        $cookie = Cookie::forget('token');
+        
+        return response([
+            'message' => "Logout successfully",
+        ], 200)->withCookie($cookie);
     }
 }
