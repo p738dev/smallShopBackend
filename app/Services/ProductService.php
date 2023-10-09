@@ -45,7 +45,6 @@ class ProductService implements ProductServiceInterface
             };
 
             $product = new Product();
-            $product->id = Str::uuid()->toString();
             $product->title = $request->title;
             $product->desc = $request->desc;
             $product->category = $request->category;

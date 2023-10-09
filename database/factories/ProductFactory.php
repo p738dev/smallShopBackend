@@ -21,7 +21,6 @@ class ProductFactory extends Factory
             "newest",
             "bargain"]),
             'price'=>$this->faker->randomFloat(2, 100, 500),
-            'image'=>$this->faker->imageUrl(640, 480)
         ];
     }
 }

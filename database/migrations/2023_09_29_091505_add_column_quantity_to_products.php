@@ -14,7 +14,7 @@ class AddColumnQuantityToProducts extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->integer('quantity')->default(1)->after('image');
+            $table->integer('quantity')->default(1)->after('price');
         });
     }
 

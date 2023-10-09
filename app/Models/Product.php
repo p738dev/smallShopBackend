@@ -16,7 +16,6 @@ class Product extends Model
         'desc',
         'category',
         'price',
-        'image',
         'quantity'
     ];
 
