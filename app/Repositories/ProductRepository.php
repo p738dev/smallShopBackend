@@ -25,7 +25,7 @@ class ProductRepository implements ProductRepositoryInterface
         $query->orderBy('price', strtoupper($sort_param));
         }
         
-        $products = $query->paginate(10);
+        $products = $query->paginate(7);
         return $products;
     } 
 
