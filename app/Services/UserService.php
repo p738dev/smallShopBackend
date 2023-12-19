@@ -122,12 +122,20 @@ class UserService implements UserServiceInterface
      * @return JsonResponse
      */
     public function logout() {
-        Auth::logout();
+        try {
+            Auth::logout();
         
-        $cookie = Cookie::forget('token');
+            $cookie = Cookie::forget('token');
         
-        return response([
-            'message' => "Logout successfully",
-        ], 200)->withCookie($cookie);
+            return response([
+                'message' => "Logout successfully",
+            ], 200)->withCookie($cookie);
+            
+        } catch (\Throwable $th) {
+            return response()->json([
+                'is_success' => false,
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 }
